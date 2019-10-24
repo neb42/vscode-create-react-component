@@ -22,7 +22,7 @@ async function collectInputs() {
   return state as State;
 }
 
-const title = 'Create Application Service';
+const title = 'Create React Component';
 
 const yesNo: QuickPickItem[] = ['yes', 'no'].map(label => ({ label }));
 
