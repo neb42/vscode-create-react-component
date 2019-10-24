@@ -1,0 +1,13 @@
+{{#isStyledComponent}}
+// @flow
+import styled from 'styled-components';
+
+export const Container = (() => {
+  return styled.div``;
+})();
+{{/isStyledComponent}}
+{{^isStyledComponent}}
+.{{ componentName }} {
+
+}
+{{/isStyledComponent}}

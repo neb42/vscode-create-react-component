@@ -1,0 +1,86 @@
+{
+  "name": "vscode-create-react-component",
+  "displayName": "Create React Component",
+  "description": "",
+  "publisher": "neb42",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.39.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:extension.genReactComponentFiles"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "Create React Component",
+      "properties": {
+        "CreateReactComponent.styleFile.type": {
+          "type": "string",
+          "enum": [
+            "styled-components (.js)",
+            "standard (.css)"
+          ],
+          "default": "styled-components (.js)",
+          "description": "The type of stylesheet file to create"
+        },
+        "CreateReactComponent.styleFile.suffix": {
+          "type": "string",
+          "default": ".styles",
+          "description": "The suffix to add to the end of the stylesheet filename. Default: ComponentName.styles.(extension)"
+        },
+        "CreateReactComponent.containerFile.suffix": {
+          "type": "string",
+          "default": "Container",
+          "description": "The suffix to add to the end of the container filename. Default: ComponentNameContainer.js"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "extension.genReactComponentFiles",
+        "title": "New react component"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "extension.genReactComponentFiles",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run compile",
+    "compile": "tsc -p ./",
+    "postcompile": "cp -r ./src/templates ./out/templates",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^8.0.1",
+    "@types/mustache": "^0.8.32",
+    "@types/node": "^10.12.21",
+    "@types/vscode": "^1.39.0",
+    "@typescript-eslint/eslint-plugin": "^2.5.0",
+    "@typescript-eslint/parser": "^2.5.0",
+    "eslint": "^5.7.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.2.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "prettier": "^1.17.0",
+    "prettier-eslint": "^8.8.2",
+    "prettycli": "^1.4.3",
+    "typescript": "^3.3.1"
+  },
+  "dependencies": {
+    "fs-extra": "^8.1.0",
+    "mustache": "^3.1.0"
+  }
+}

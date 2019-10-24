@@ -1,0 +1,31 @@
+// @flow
+
+import React from 'react';
+
+{{#isStyledComponent}}
+import * as Styles from './{{ styleFileName }}';
+{{/isStyledComponent}}
+{{^isStyledComponent}}
+import './{{ styleFileName }}';
+{{/isStyledComponent}}
+
+type Props = {
+
+};
+
+const {{ componentName }} = ({}: Props) => {
+  return (
+    {{#isStyledComponent}}
+    <Styles.Container>
+      {{ componentName }}
+    </Styles.Container>
+    {{/isStyledComponent}}
+    {{^isStyledComponent}}
+    <div className="{{ componentName }}">
+      {{ componentName }}
+    </div>
+    {{/isStyledComponent}}
+  );
+};
+
+export default {{ componentName }};
