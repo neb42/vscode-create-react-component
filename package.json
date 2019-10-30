@@ -3,16 +3,14 @@
   "displayName": "Create React Component",
   "description": "",
   "publisher": "neb42",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "engines": {
     "vscode": "^1.39.0"
   },
   "categories": [
     "Other"
   ],
-  "activationEvents": [
-    "onCommand:extension.genReactComponentFiles"
-  ],
+  "activationEvents": ["*"],
   "main": "./out/extension.js",
   "contributes": {
     "configuration": {
@@ -50,7 +48,8 @@
       "explorer/context": [
         {
           "command": "extension.genReactComponentFiles",
-          "group": "navigation"
+          "group": "navigation@7",
+          "when": "explorerResourceIsFolder"
         }
       ]
     }

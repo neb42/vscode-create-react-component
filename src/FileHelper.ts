@@ -80,7 +80,7 @@ export default class FileHelper {
     const styleFileName = `${componentName}${styleConfig.suffix}${styleFileExtension}`;
     const destinationPath = path.join(componentDir, `${componentName}.js`);
 
-    this.createFile(destinationPath, 'component.mst', { styleFileName, isStyledComponent: styleConfig.type === 'styled-components (.js)' });
+    this.createFile(destinationPath, 'component.mst', { componentName, styleFileName, isStyledComponent: styleConfig.type === 'styled-components (.js)' });
 
     return destinationPath;
   };
