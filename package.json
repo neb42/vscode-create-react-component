@@ -1,9 +1,9 @@
 {
-  "name": "vscode-create-react-component",
+  "name": "neb42.vscode-create-react-component",
   "displayName": "Create React Component",
-  "description": "",
+  "description": "An opinionated react component generator based on the workflow of the Faculty AI frontend team",
   "publisher": "neb42",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "engines": {
     "vscode": "^1.39.0"
   },
@@ -28,13 +28,18 @@
         },
         "CreateReactComponent.styleFile.suffix": {
           "type": "string",
-          "default": ".styles",
+          "default": ".styles.js",
           "description": "The suffix to add to the end of the stylesheet filename. Default: ComponentName.styles.(extension)"
         },
         "CreateReactComponent.containerFile.suffix": {
           "type": "string",
-          "default": "Container",
-          "description": "The suffix to add to the end of the container filename. Default: ComponentNameContainer.js"
+          "default": ".container.js",
+          "description": "The suffix to add to the end of the container filename. Default: ComponentName.container.js"
+        },
+        "CreateReactComponent.typesFile.suffix": {
+          "type": "string",
+          "default": ".types.js",
+          "description": "The suffix to add to the end of the types filename. Default: ComponentName.types.js"
         }
       }
     },
@@ -57,9 +62,11 @@
   "scripts": {
     "vscode:prepublish": "yarn run compile",
     "compile": "tsc -p ./",
+    "precompile": "rm -rf ./out/*",
     "postcompile": "cp -r ./src/templates ./out/templates",
     "watch": "tsc -watch -p ./",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "package": "npx vsce package"
   },
   "devDependencies": {
     "@types/fs-extra": "^8.0.1",

@@ -1,0 +1,16 @@
+// @flow
+
+export type Props = {||};
+
+{{#hasContainer}}
+export type OwnProps = {||};
+
+export type StateProps = {||};
+
+export type DispatchProps = {||};
+
+{{/hasContainer}}
+{{#isStyledComponent}}
+export type StyleProps$Container = {||};
+
+{{/isStyledComponent}}

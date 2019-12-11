@@ -81,14 +81,15 @@ const createComponent = async (uri: string) => {
     `${uri} ${componentName} ${container ? 'yes' : 'no'} ${styles ? 'yes' : 'no'}`,
   );
 
-    const componentDir = FileHelper.createComponentDir(uri, componentName);
+  const componentDir = FileHelper.createComponentDir(uri, componentName);
 
-    const indexFilePath = FileHelper.createIndexFile(uri, componentDir, componentName, container);
-    const componentFilePath = FileHelper.createComponentFile(uri, componentDir, componentName, styles);
-    const containerFilePath = container
-      ? FileHelper.createContainerFile(uri, componentDir, componentName)
-      : null;
-    const stylesFilePath = styles ? FileHelper.createStylesFile(uri, componentDir, componentName) : null;
+  const indexFilePath = FileHelper.createIndexFile(uri, componentDir, componentName, container);
+  const componentFilePath = FileHelper.createComponentFile(uri, componentDir, componentName, styles);
+  const typesFilePath = FileHelper.createTypesFile(uri, componentDir, componentName, styles);
+  const containerFilePath = container
+    ? FileHelper.createContainerFile(uri, componentDir, componentName)
+    : null;
+  const stylesFilePath = styles ? FileHelper.createStylesFile(uri, componentDir, componentName) : null;
 
   //   const filePaths = [indexFilePath, componentFilePath, containerFilePath, stylesFilePath].filter(
   //     path => path !== null,

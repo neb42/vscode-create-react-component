@@ -3,28 +3,22 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import type { Props, OwnProps, StateProps, DispatchProps } from './{{ typesFileName }}';
 import {{ componentName }} from './{{ componentName }}';
 
-type OwnProps = {
+const mapStateToProps = (state: ApplicationState, ownProps: OwnProps): StateProps => ({});
 
-};
+const mapDispatchToProps = (dispatch: ApplicationDispatch, ownProps: OwnProps): DispatchProps => 
+  bindActionCreators({}, dispatch);
 
-const mapStateToProps = (state: ApplicationState, ownProps: OwnProps) => ({});
-
-const mapDispatchToProps = (dispatch: ApplicationDispatch, ownProps: OwnProps) => 
-  bindActionCreators(
-    {},
-    dispatch,
-  );
-
-const mergeProps = (stateProps: ApplicationState, dispatchProps: ApplicationDispatch, ownProps: OwenProps) => ({
+const mergeProps = (stateProps: StateProps, dispatchProps: DispatchProps, ownProps: OwnProps): Props => ({
   ...stateProps,
   ...dispatchProps,
   ...ownProps,
 });
 
-export default connect(
+export default connect<Props, OwnProps, _, _, _, _>(
   mapStateToProps,
   mapDispatchToProps,
   mergeProps,
-)({{ componentName }})
+)({{ componentName }});
