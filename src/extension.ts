@@ -85,7 +85,7 @@ const createComponent = async (uri: string) => {
 
   const indexFilePath = FileHelper.createIndexFile(uri, componentDir, componentName, container);
   const componentFilePath = FileHelper.createComponentFile(uri, componentDir, componentName, styles);
-  const typesFilePath = FileHelper.createTypesFile(uri, componentDir, componentName, styles);
+  const typesFilePath = FileHelper.createTypesFile(uri, componentDir, componentName, styles, container);
   const containerFilePath = container
     ? FileHelper.createContainerFile(uri, componentDir, componentName)
     : null;
