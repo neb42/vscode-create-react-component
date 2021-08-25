@@ -1,24 +1,8 @@
-// @flow
+{{=<% %>=}}
+import * as React from 'react';
 
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { <% componentName %>Component } from './<% componentName %>.component';
 
-import type { Props, OwnProps, StateProps, DispatchProps } from './{{ typesFileName }}';
-import {{ componentName }} from './{{ componentName }}';
-
-const mapStateToProps = (state: ApplicationState, ownProps: OwnProps): StateProps => ({});
-
-const mapDispatchToProps = (dispatch: ApplicationDispatch, ownProps: OwnProps): DispatchProps => 
-  bindActionCreators({}, dispatch);
-
-const mergeProps = (stateProps: StateProps, dispatchProps: DispatchProps, ownProps: OwnProps): Props => ({
-  ...stateProps,
-  ...dispatchProps,
-  ...ownProps,
-});
-
-export default connect<Props, OwnProps, _, _, _, _>(
-  mapStateToProps,
-  mapDispatchToProps,
-  mergeProps,
-)({{ componentName }});
+export const <% componentName %>Container = ({}: Props) => {
+  return <<% componentName %>Component />;
+};

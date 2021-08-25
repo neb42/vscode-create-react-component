@@ -14,43 +14,52 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": ["*"],
+  "activationEvents": [
+    "*"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "configuration": {
       "type": "object",
       "title": "Create React Component",
       "properties": {
+        "CreateReactComponent.language": {
+          "type": "string",
+          "enum": [
+            "TypeScript"
+          ],
+          "default": "TypeScript",
+          "description": "The language to use"
+        },
         "CreateReactComponent.styleFile.type": {
           "type": "string",
           "enum": [
-            "styled-components (.js)",
-            "standard (.css)"
+            "Styled components"
           ],
-          "default": "styled-components (.js)",
+          "default": "Styled components",
           "description": "The type of stylesheet file to create"
         },
         "CreateReactComponent.styleFile.suffix": {
           "type": "string",
-          "default": ".styles.js",
-          "description": "The suffix to add to the end of the stylesheet filename. Default: ComponentName.styles.(extension)"
+          "default": "styles",
+          "description": "The suffix to add to the end of the stylesheet filename. Default: ComponentName.styles.ts"
         },
         "CreateReactComponent.containerFile.suffix": {
           "type": "string",
-          "default": ".container.js",
-          "description": "The suffix to add to the end of the container filename. Default: ComponentName.container.js"
+          "default": "container",
+          "description": "The suffix to add to the end of the container filename. Default: ComponentName.container.tsx"
         },
-        "CreateReactComponent.typesFile.suffix": {
+        "CreateReactComponent.componentFile.suffix": {
           "type": "string",
-          "default": ".types.js",
-          "description": "The suffix to add to the end of the types filename. Default: ComponentName.types.js"
+          "default": "component",
+          "description": "The suffix to add to the end of the component filename. Default: ComponentName.component.tsx"
         }
       }
     },
     "commands": [
       {
         "command": "extension.genReactComponentFiles",
-        "title": "New react component"
+        "title": "New React component"
       }
     ],
     "menus": {
@@ -69,25 +78,32 @@
     "precompile": "rm -rf ./out/*",
     "postcompile": "cp -r ./src/templates ./out/templates",
     "watch": "tsc -watch -p ./",
-    "lint": "eslint .",
-    "package": "npx vsce package"
+    "lint": "eslint 'src/**/*.{js,ts,tsx}' --quiet --fix",
+    "package": "npx vsce package",
+    "test": "yarn compile && node out/test.js"
   },
   "devDependencies": {
     "@types/fs-extra": "^8.0.1",
     "@types/mustache": "^0.8.32",
-    "@types/node": "^10.12.21",
+    "@types/node": "^16.7.1",
     "@types/vscode": "^1.39.0",
-    "@typescript-eslint/eslint-plugin": "^2.5.0",
-    "@typescript-eslint/parser": "^2.5.0",
-    "eslint": "^5.7.0",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-config-prettier": "^4.2.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-prettier": "^3.0.1",
-    "prettier": "^1.17.0",
-    "prettier-eslint": "^8.8.2",
+    "@typescript-eslint/eslint-plugin": "^4.23.0",
+    "eslint": "^7.26.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-typescript": "^2.3.0",
+    "eslint-import-resolver-webpack": "^0.13.0",
+    "eslint-plugin-flowtype": "^5.7.2",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jest": "^24.3.6",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.5",
+    "eslint-plugin-react-hooks": "^4.0.8",
+    "prettier": "^2.0.5",
+    "prettier-eslint": "^12.0.0",
     "prettycli": "^1.4.3",
-    "typescript": "^3.3.1"
+    "typescript": "^4.3.5"
   },
   "dependencies": {
     "fs-extra": "^8.1.0",

@@ -9,8 +9,11 @@ import {
 
 class InputFlowAction {
   private constructor() {}
+
   static back = new InputFlowAction();
+
   static cancel = new InputFlowAction();
+
   static resume = new InputFlowAction();
 }
 
@@ -45,6 +48,7 @@ export default class MultiStepInput {
   }
 
   private current?: QuickInput;
+
   private steps: InputStep[] = [];
 
   private async stepThrough<T>(start: InputStep) {
@@ -103,14 +107,14 @@ export default class MultiStepInput {
             ...(buttons || []),
           ];
           disposables.push(
-            input.onDidTriggerButton(item => {
+            input.onDidTriggerButton((item) => {
               if (item === QuickInputButtons.Back) {
                 reject(InputFlowAction.back);
               } else {
                 resolve(item as any);
               }
             }),
-            input.onDidChangeSelection(items => resolve(items[0])),
+            input.onDidChangeSelection((items) => resolve(items[0])),
             input.onDidHide(() => {
               (async () => {
                 reject(
@@ -129,7 +133,7 @@ export default class MultiStepInput {
         },
       );
     } finally {
-      disposables.forEach(d => d.dispose());
+      disposables.forEach((d) => d.dispose());
     }
   }
 
@@ -159,7 +163,7 @@ export default class MultiStepInput {
           ];
           let validating = validate('');
           disposables.push(
-            input.onDidTriggerButton(item => {
+            input.onDidTriggerButton((item) => {
               if (item === QuickInputButtons.Back) {
                 reject(InputFlowAction.back);
               } else {
@@ -167,7 +171,7 @@ export default class MultiStepInput {
               }
             }),
             input.onDidAccept(async () => {
-              const value = input.value;
+              const { value } = input;
               input.enabled = false;
               input.busy = true;
               if (!(await validate(value))) {
@@ -176,7 +180,7 @@ export default class MultiStepInput {
               input.enabled = true;
               input.busy = false;
             }),
-            input.onDidChangeValue(async text => {
+            input.onDidChangeValue(async (text) => {
               const current = validate(text);
               validating = current;
               const validationMessage = await current;
@@ -202,7 +206,7 @@ export default class MultiStepInput {
         },
       );
     } finally {
-      disposables.forEach(d => d.dispose());
+      disposables.forEach((d) => d.dispose());
     }
   }
 }

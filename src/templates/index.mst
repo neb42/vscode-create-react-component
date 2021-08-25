@@ -1,1 +1,7 @@
-export { default } from './{{ exportFileName }}';
+{{=<% %>=}}
+<%#hasContainer%>
+export { <% componentName %>Container as <% componentName %> } from './<% containerFileName %>';
+<%/hasContainer%>
+<%^hasContainer%>
+export { <% componentName %>Component as <% componentName %> } from './<% componentFileName %>';
+<%/hasContainer%>

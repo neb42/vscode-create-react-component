@@ -1,38 +1,19 @@
-// @flow
+{{=<% %>=}}
+import * as React from 'react';
 
-import React from 'react';
-import type { ComponentType } from 'react';
+<%#hasStyles%>
+import * as Styles from './<% styleFileName %>';
+<%/hasStyles%>
 
-import type { Props } from './{{ typesFileName }}';
-{{#hasStyles}}
-{{#isStyledComponent}}
-import * as Styles from './{{ styleFileName }}';
-{{/isStyledComponent}}
-{{^isStyledComponent}}
-import './{{ styleFileName }}';
-{{/isStyledComponent}}
-{{/hasStyles}}
+type Props = {
 
-const {{ componentName }}: ComponentType<Props> = ({}: Props) => {
-  return (
-    {{#hasStyles}}
-    {{#isStyledComponent}}
-    <Styles.Container>
-      {{ componentName }}
-    </Styles.Container>
-    {{/isStyledComponent}}
-    {{^isStyledComponent}}
-    <div className="{{ componentName }}">
-      {{ componentName }}
-    </div>
-    {{/isStyledComponent}}
-    {{/hasStyles}}
-    {{^hasStyles}}
-    <div>
-      {{ componentName }}
-    </div>
-    {{/hasStyles}}
-  );
 };
 
-export default {{ componentName }};
+export const <% componentName %>Component = ({}: Props) => {
+  <%#hasStyles%>
+  return <Styles.Container><% componentName %></Styles.Container>;
+  <%/hasStyles%>
+  <%^hasStyles%>
+  return <div><% componentName %></div>;
+  <%/hasStyles%>
+};
