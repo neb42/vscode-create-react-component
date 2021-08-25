@@ -77,9 +77,6 @@ async function pickStyles(input: MultiStepInput, state: Partial<State>) {
 
 const createComponent = async (uri: string) => {
   const { componentName, container, styles } = await collectInputs();
-  window.showInformationMessage(
-    `${uri} ${componentName} ${container ? 'yes' : 'no'} ${styles ? 'yes' : 'no'}`,
-  );
 
   const componentDir = FileHelper.createComponentDir(uri, componentName);
 
