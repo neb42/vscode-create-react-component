@@ -1,7 +1,7 @@
 {
   "name": "vscode-create-react-component",
   "displayName": "Create React Component",
-  "description": "An opinionated react component generator based on the workflow of the Faculty AI frontend team",
+  "description": "An opinionated React component generator",
   "publisher": "neb42",
   "version": "0.2.0",
   "repository": {
