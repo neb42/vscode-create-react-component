@@ -109,7 +109,7 @@ export default class FileHelper {
   ): string => {
     const styleConfig = getStyleConfig(uri);
     const extenstion =
-      styleConfig.type === 'Styled components' ? getJsExtension(uri, true) : '.css';
+      styleConfig.type === 'Styled components' ? getJsExtension(uri, false) : '.css';
     return FileHelper.buildFileName(componentName, styleConfig.suffix ?? '', extenstion, inclExt);
   };
 
