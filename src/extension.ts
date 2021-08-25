@@ -1,4 +1,4 @@
-import { ExtensionContext, QuickPickItem, window, commands } from 'vscode';
+import { ExtensionContext, QuickPickItem, window, commands, workspace } from 'vscode';
 
 import FileHelper from './FileHelper';
 import MultiStepInput from './MultiStepInput';
@@ -95,11 +95,13 @@ const createComponent = async (uri: string) => {
     : null;
 
   const filePaths = [indexFilePath, componentFilePath, containerFilePath, stylesFilePath].filter(
-    (path) => path !== null,
+    (path): path is string => path !== null,
   );
 
   // const documents = await Promise.all(filePaths.map((path) => workspace.openTextDocument(path)));
-  // await Promise.all(documents.map((textDocument) => window.showTextDocument(textDocument)));
+  // await Promise.all(
+  //   documents.map((textDocument) => window.showTextDocument(textDocument, undefined, true)),
+  // );
 
   window.showInformationMessage(`Creating component '${componentName}'`);
 };
