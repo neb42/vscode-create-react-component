@@ -3,6 +3,10 @@ import * as React from 'react';
 
 import { <% componentName %>Component } from './<% componentName %>.component';
 
+type Props = {
+
+};
+
 export const <% componentName %>Container = ({}: Props) => {
   return <<% componentName %>Component />;
 };
