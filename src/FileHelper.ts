@@ -176,11 +176,16 @@ export default class FileHelper {
     return destinationPath;
   }
 
-  public static createStylesFile(uri: any, componentDir: string, componentName: string): string {
+  public static createStylesFile(
+    uri: any,
+    componentDir: string,
+    componentName: string,
+    isReactNative: boolean,
+  ): string {
     const stylesFileName = this.getStylesFileName(uri, componentName, true);
     const destinationPath = path.join(componentDir, stylesFileName);
 
-    this.createFile(destinationPath, 'styles.mst', { componentName });
+    this.createFile(destinationPath, 'styles.mst', { componentName, isReactNative });
 
     return destinationPath;
   }

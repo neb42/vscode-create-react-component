@@ -1,6 +1,7 @@
 import { ExtensionContext, QuickPickItem, window, commands, workspace } from 'vscode';
 
 import FileHelper from './FileHelper';
+import { isReactNative } from './isReactNative';
 import MultiStepInput from './MultiStepInput';
 
 const COMMAND_ID = 'extension.genReactComponentFiles';
@@ -91,7 +92,7 @@ const createComponent = async (uri: string) => {
     ? FileHelper.createContainerFile(uri, componentDir, componentName)
     : null;
   const stylesFilePath = styles
-    ? FileHelper.createStylesFile(uri, componentDir, componentName)
+    ? FileHelper.createStylesFile(uri, componentDir, componentName, isReactNative(uri))
     : null;
 
   const filePaths = [indexFilePath, componentFilePath, containerFilePath, stylesFilePath].filter(
