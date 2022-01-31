@@ -9,7 +9,7 @@ type Props = {
 
 };
 
-export const <% componentName %>Component = ({}: Props) => {
+export const <% componentName %>Component: React.FC<Props> = ({}) => {
   <%#hasStyles%>
   return <Styles.Container><% componentName %></Styles.Container>;
   <%/hasStyles%>

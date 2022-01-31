@@ -7,6 +7,6 @@ type Props = {
 
 };
 
-export const <% componentName %>Container = ({}: Props) => {
+export const <% componentName %>Container: React.FC<Props> = ({}) => {
   return <<% componentName %>Component />;
 };
